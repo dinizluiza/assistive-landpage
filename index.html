@@ -10,6 +10,7 @@
     :root {
       --green: #90BA23;
       --gray-text: #666666;
+      --dark-text: #333;
       --muted: #f6f7f8;
       --accent-yellow: #F8A913;
       --accent-blue: #0398CD;
@@ -18,13 +19,17 @@
     }
     * { box-sizing: border-box }
     html, body { height: 100% }
-    html { scroll-padding-top: 100px; }
+    html { 
+      scroll-padding-top: 100px; 
+      scroll-behavior: smooth;
+    }
     body {
       margin: 0;
       font-family: "Nunito Sans", Arial, sans-serif;
       color: var(--gray-text);
       background: white;
-      line-height: 1.5;
+      line-height: 1.6;
+      font-size: 17px;
     }
     header {
       display: flex;
@@ -44,9 +49,21 @@
     }
     .logo { display: flex; align-items: center; gap: 12px; padding: 10px }
     .logo img { width: 250px; height: 65px }
-    .brand { font-weight: 800; color: var(--gray-text); font-size: 20px }
+    
     nav { display: flex; gap: 24px; align-items: center }
-    nav a { color: var(--gray-text); text-decoration: none; font-weight: 600 }
+    nav a { 
+      color: var(--gray-text); 
+      text-decoration: none; 
+      font-weight: 600;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent; /* Efeito hover sutil */
+      transition: all 0.2s ease;
+    }
+    nav a:hover {
+      color: var(--dark-text);
+      border-bottom-color: var(--green);
+    }
+    
     .btn-primary {
       background: var(--green);
       color: white;
@@ -56,40 +73,159 @@
       font-weight: 700;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     }
-    .hero { display: grid; grid-template-columns: 1fr 420px; gap: 32px; align-items: center; padding: 72px 0 42px 0 }
-    .hero h1 { font-size: 48px; margin: 0; color: #686666 }
-    .hero p { margin-top: 18px; color: #555; font-size: 16px; max-width: 680px }
-    .hero .cta { margin-top: 22px; display: flex; gap: 12px; align-items: center }
-    .illustration {
-      background: linear-gradient(180deg, #fff 0%, var(--muted) 100%);
-      border-radius: 18px; padding: 16px; display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.04);
+    .btn-primary:hover {
+        background: #7ca51b; /* Efeito hover no botão */
+        color: white;
+        border-bottom: 2px solid transparent;
     }
-    section { padding: 36px 0; border-top: 1px solid #f0f0f0 }
+
+    .hero { 
+      display: grid; 
+      grid-template-columns: 1fr 420px; 
+      gap: 32px; 
+      align-items: center; 
+      padding: 82px 0 42px 0;
+      margin-top: 50px; /* Compensa o header fixo */
+    }
+    .hero h1 { 
+      font-size: 48px; 
+      margin: 0; 
+      color: var(--dark-text); /* Cor mais escura para H1 */
+      line-height: 1.2;
+    }
+    .hero p { 
+      margin-top: 18px; 
+      color: #555; 
+      font-size: 18px; /* Texto de impacto maior */
+      max-width: 680px 
+    }
+    .hero .cta { margin-top: 22px; display: flex; gap: 12px; align-items: center }
+    .initial_img img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 16px;
+        box-shadow: 0 6px 24px rgba(0,0,0,0.04);
+    }
+
+    section { 
+        padding: 56px 0; /* Mais espaçamento vertical */
+        border-top: 1px solid #f0f0f0 
+    }
     .section-title {
       display: inline-block; padding: 8px 14px; border-radius: 8px;
       background: var(--accent-yellow); color: white; font-weight: 700; margin-bottom: 16px; font-size: 18px;
     }
+    
     .grid-2 { display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start }
+    
     .features { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px; margin-top: 14px }
     .feature { display: flex; gap: 12px; align-items: flex-start; padding: 14px; border-radius: 10px }
     .feature .little-icon { min-width: 46px; height: 46px; border-radius: 50%; display: flex; align-items: center; justify-content: center }
     .feature h4 { margin: 0; font-size: 16px; font-weight: 700; color: #333 }
     .feature p { margin: 6px 0 0 0; color: #666; font-size: 14px }
-    .lead-card { background: white; border-radius: 14px; padding: 16px; box-shadow: 0 6px 24px rgba(0,0,0,0.04); display: flex; gap: 16px; align-items: center }
-    .lead-photo { width: 86px; height: 86px; border-radius: 18px; overflow: hidden; border: 3px solid var(--muted); display: flex; align-items: center; justify-content: center }
-    .lead-photo img { width: 100%; height: 100%; object-fit: cover }
-    footer { background: #4b4b4b; color: white; padding: 26px 0; margin-top: 32px; text-align: center; border-top: 6px solid #444 }
+    
+    .lead-photo img { width: 100%; height: 100%; object-fit: cover; box-shadow: 0 6px 24px rgba(0,0,0,0.04); border-radius: 18px; }
+
+    .publications-list {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 24px;
+    }
+    .publications-list li {
+        background: var(--muted);
+        padding: 18px 24px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        line-height: 1.6;
+    }
+    .publications-list li strong {
+        font-size: 18px;
+        color: var(--dark-text);
+        display: block; /* Título em linha própria */
+        margin-bottom: 4px;
+    }
+    .publications-list li em {
+        color: #555;
+        font-size: 15px;
+    }
+    .publications-list li a {
+        display: inline-block;
+        margin-top: 10px;
+        font-weight: 700;
+        font-size: 15px;
+        color: var(--green);
+        text-decoration: none;
+    }
+    .publications-list li a:hover {
+        text-decoration: underline;
+    }
+
+      /* ====== Carousel styles ====== */
+      .carousel { position: relative; margin-top: 24px; }
+      .carousel-viewport { overflow: hidden; }
+      .carousel-track { display: flex; transition: transform 0.4s ease; gap: 18px; }
+      .carousel-item {
+        min-width: 100%;
+        background: var(--muted);
+        padding: 18px 24px;
+        border-radius: 12px;
+        line-height: 1.6;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      }
+      .carousel-item strong { font-size: 18px; color: var(--dark-text); display:block; margin-bottom:6px }
+      .carousel-controls { position: absolute; top: 50%; left: 0; right: 0; display:flex; justify-content:space-between; transform: translateY(-50%); pointer-events: none; padding: 0 8px; }
+      .carousel-controls button {
+        pointer-events: auto;
+        background: var(--accent-blue);
+        border: 1px solid #eee;
+        padding: 8px 12px;
+        border-radius: 10px;
+        font-weight: 700;
+        cursor: pointer;
+        margin: 0px -70px;
+      }
+      .carousel-controls button:focus { outline: 3px solid rgba(3,152,205,0.25) }
+      .carousel-dots { margin-top: 12px; display:flex; gap:8px; justify-content:center; align-items:center }
+      .carousel-dot {
+        width:10px; height:10px; border-radius:50%; background:#ddd; border:0; cursor:pointer;
+      }
+      .carousel-dot[aria-current="true"] { background: var(--accent-blue); }
+      @media (min-width:980px){
+        .carousel-item { min-width: 60%; } /* show larger card on wide screens */
+      }
+      /* ====== end carousel styles ====== */
+
+    footer { 
+        background: #4b4b4b; 
+        color: #ddd; /* Cor mais suave */
+        padding: 42px 0;
+        margin-top: 32px; 
+        text-align: center; 
+        border-top: 6px solid #444 
+    }
+    footer .wrap {
+        padding: 0 24px;
+        max-height: none;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    footer strong { color: white; }
+
     @media (max-width:980px){
       .hero{grid-template-columns:1fr;}
       .grid-2{grid-template-columns:1fr;}
       .hero h1{font-size:36px;}
-      .illustration{order:2;}
+      .initial_img{order: -1; margin-bottom: 24px;} /* Imagem vem primeiro no mobile */
+      .features { grid-template-columns: 1fr; } /* Features em coluna única */
     }
     @media (max-width:520px){
+      body { font-size: 16px; }
       .wrap{padding:18px;}
+      .hero { padding-top: 60px; margin-top: 40px;}
       .hero h1{font-size:28px;}
-      nav{display:none;}
+      .hero p { font-size: 17px; }
+      nav{display:none;} /* Manter o menu oculto no mobile, como no original */
     }
   </style>
 </head>
@@ -99,6 +235,7 @@
       <img src="assets/assistive_logo.png" alt="logo_assistive"/>
     </a>
     <nav>
+      <a href="#publicacoes">Publicações</a>
       <a href="#sobre">Sobre</a>
       <a href="#destaques">Destaques</a>
       <a href="#inovacao">Inovação</a>
@@ -106,31 +243,81 @@
       <a class="btn-primary" href="https://reaact.com.br/" target="_blank" rel="noopener noreferrer">Acesse o Reaact</a>
     </nav>
   </header>
+  
   <div class="wrap" role="main">
+    
     <section class="hero" aria-labelledby="hero-title">
       <div>
         <h1 id="hero-title">Dando voz a quem tem muito a dizer.</h1>
         <p>
-          Imagine ter pensamentos, sentimentos e vontades, mas não conseguir organizá-los e transformá-los em palavras. Imaginou? Essa é a realidade de milhões de pessoas com autismo, síndrome de Down, paralisia cerebral e outras condições que afetam a fala. É neste contexto que a Comunicação Aumentativa e Alternativa (CAA) se torna mais que uma ferramenta tecnológica para ser um meio que ajuda pessoas com necessidades complexas de comunicação a compartilharem o seu mundo interior com os outros. A CAA é baseada em cartões de comunicação que são imagens com legendas. Esses cartões são organizados em pasta ou pranchas temáticas (ex. pessoas, ações, sentimentos e alimentos) que permitem uma pessoa construir mensagens de forma autônoma, transformando pensamentos em comunicação funcional. Ao tocar, apontar ou selecionar esses cartões de comunicação, a pessoa consegue formar frases para comunicar desde necessidades imediatas como "estou com sede" ou "quero brincar", até sentimentos, ideias e preferências.
+          O Assistive é um grupo de pesquisa do CIn-UFPE dedicado a criar tecnologias assistivas que transformam vidas. Desenvolvemos soluções de alto impacto, como a plataforma Reaact, para revolucionar a Comunicação Aumentativa e Alternativa (CAA).
         </p>
       </div>
-      <div class="illustration" aria-hidden="true">
-        <img src="assets/Illustration.png" alt="ilustration"/>
+      <div class="initial_img" aria-hidden="true">
+        <img src="assets/img5.jpg" alt="initial_img"/>
       </div>
     </section>
+
+    <section id="publicacoes" aria-labelledby="publicacoes-title">
+      <div class="section-title" style="background:var(--accent-blue)">Publicações</div>
+      <p>Nossas pesquisas são validadas e compartilhadas com a comunidade científica. Conheça alguns dos nossos principais artigos:</p>
+      
+      <div class="carousel" role="region" aria-label="Carrossel de publicações">
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <article class="carousel-item" role="group" aria-roledescription="slide" aria-label="Slide 1 of 3">
+              <strong>Predictive Authoring for Brazilian Portuguese Augmentative and Alternative Communication</strong>
+              <div>Autores: Pereira, J.; Nogueira, R.; Zanchettin, C.; Fidalgo, R.</div>
+              <em>Cambridge University Press, 2025.</em>
+              <div style="margin-top:10px;"><a href="https://www.cambridge.org/core/services/aop-cambridge-core/content/view/6E0F60312E55A307C289DF6C41EE5D8C/S297704242400027Xa.pdf/predictive_authoring_for_brazilian_portuguese_augmentative_and_alternative_communication.pdf" target="_blank" rel="noopener noreferrer">Acessar</a></div>
+            </article>
+
+            <article class="carousel-item" role="group" aria-roledescription="slide" aria-label="Slide 2 of 3">
+              <strong>An Augmentative and Alternative Communication Synthetic Corpus for Brazilian Portuguese</strong>
+              <div>Autores: Pereira, J.; Nogueira, R.; Zanchettin, C.; Fidalgo, R. N.</div>
+              <em>IEEE International Conference on Advanced Learning Technologies (ICALT), 2023.</em>
+              <div style="margin-top:10px;"><a href="https://ieeexplore.ieee.org/document/10260970" target="_blank" rel="noopener noreferrer">Acessar</a></div>
+            </article>
+            
+            <article class="carousel-item" role="group" aria-roledescription="slide" aria-label="Slide 3 of 3">
+              <strong>Enhancing Brazilian Portuguese Augmentative and Alternative Communication with Card Prediction and Colourful Semantics</strong>
+              <div>Autores: Pereira, J.; Rodrigues, F.; Pereira, J.; Zanchettin, C.; Fidalgo, R.</div>
+              <em>arXiv, 2024.</em>
+              <div style="margin-top:10px;"><a href="https://arxiv.org/abs/2405.15896" target="_blank" rel="noopener noreferrer">Acessar</a></div>
+            </article>
+          </div>
+        </div>
+
+        <div class="carousel-controls" aria-hidden="false">
+          <button class="carousel-prev" aria-label="Publicação anterior">&larr;</button>
+          <button class="carousel-next" aria-label="Próxima publicação">&rarr;</button>
+        </div>
+
+        <div class="carousel-dots" role="tablist" aria-label="Indicadores de slides">
+          <button class="carousel-dot" role="tab" aria-label="Ir para slide 1" aria-current="true"></button>
+          <button class="carousel-dot" role="tab" aria-label="Ir para slide 2"></button>
+          <button class="carousel-dot" role="tab" aria-label="Ir para slide 3"></button>
+        </div>
+      </div>
+    </section>
+
     <section id="sobre" aria-labelledby="sobre-title">
       <div class="grid-2">
         <div>
           <div class="section-title" style="background:var(--accent-yellow)">Sobre</div>
           <p>
-            Neste contexto, o Assistive é um grupo de pesquisa do Centro de Informática (CIn) da UFPE, dedicado ao desenvolvimento de tecnologias assistivas de alto impacto social. Sua atuação concentra-se no desenvolvimento de pesquisa aplicada ao desenvolvimento de produtos inovadores voltados a pessoas neurodivergentes ou com necessidades complexas de comunicação, como autismo, síndrome de Down e paralisia cerebral. Assim, aliando pesquisa acadêmica relevante à aplicação prática, o grupo visa oferecer soluções que melhorem a qualidade de vida e promovam autonomia por meio de soluções inovadoras.
+            O Assistive é um grupo de pesquisa do Centro de Informática (CIn) da UFPE, dedicado ao desenvolvimento de tecnologias assistivas de alto impacto social.
+            Nossa atuação concentra-se em pesquisa aplicada ao desenvolvimento de produtos inovadores voltados a pessoas neurodivergentes ou com necessidades complexas de comunicação, como autismo, síndrome de Down e paralisia cerebral.
+            <br/><br/>
+            Aliando pesquisa acadêmica relevante à aplicação prática, o grupo visa oferecer soluções que melhorem a qualidade de vida e promovam autonomia.
           </p>
         </div>
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:18px">
-          <img src="assets/sobre.png" alt="sobre"/>
+        <div style="display:flex;height:100%;align-items:flex-end; padding-bottom:25px;">
+          <img src="assets/montagem.png" alt="sobre" style="width:100%; max-width: 360px; border-radius: 12px;" />
         </div>
       </div>
     </section>
+
     <section id="destaques" aria-labelledby="destaques-title">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <div class="section-title" style="background:var(--green)">Destaques</div>
@@ -174,38 +361,97 @@
         </div>
       </div>
     </section>
+
     <section id="inovacao" aria-labelledby="inovacao-title">
       <div class="grid-2">
         <div>
           <div class="section-title" style="background:var(--accent-red)">Inovação</div>
           <p>
-            A Reaact é uma das primeiras soluções de CAA do mundo a operar em nuvem (pode ser usada de qualquer lugar) e ser multiplataforma (pode ser usada em qualquer computador ou dispositivo móvel). Esta inovação tecnológica junto com o desenvolvimento de pesquisas para construção de vocabulários, recomendação de cartões de comunicação, analytics de funções comunicativas e expansão de frases mostra a relevância do grupo Assistive no cenário internacional de tecnologia assistiva. Este viés de pesquisa evidencia uma particularidade do grupo: o Assistive está entre as poucas iniciativas brasileiras que ancoram o desenvolvimento de pesquisa e a criação de Tecnologia Assistiva nos alicerces teóricos e metodológicos da Ciência da Computação. Isto é, diferentemente de outros grupos de pesquisa, o Assistive opera a partir do cerne da computação para enfrentar desafios humanos complexos.<br/><br/>
-            Além do desenvolvimento científico e tecnológico, o grupo promove a disseminação do conhecimento por meio de oficinas gratuitas voltadas a profissionais da saúde e educação. Nessas oficinas, os participantes aprendem a usar a plataforma Reaact para criar e adaptar pranchas de CAA, ampliando o alcance e o impacto da plataforma.
+            Nossa abordagem se destaca por ancorar o desenvolvimento de Tecnologia Assistiva nos alicerces teóricos da Ciência da Computação.
           </p>
+          <ul style="padding-left: 20px;">
+            <li>
+              <strong>Pioneirismo:</strong> O Reaact é uma das primeiras soluções de CAA do mundo a operar 100% em nuvem e ser verdadeiramente multiplataforma.
+            </li>
+            <li>
+              <strong>Pesquisa Aplicada:</strong> Focamos em desafios computacionais complexos, como construção de vocabulários, recomendação de cartões e analytics de comunicação.
+            </li>
+            <li>
+              <strong>Disseminação:</strong> Promovemos oficinas gratuitas para profissionais da saúde e educação, ampliando o alcance e o impacto da plataforma.
+            </li>
+          </ul>
         </div>
-        <div style="display:flex;align-items:center;justify-content:center">
-          <img src="assets/inovacao.png" alt="inovacao"/>
+        <div style="display:flex;height:100%;align-items:flex-end; padding-bottom:25px;">
+          <img src="assets/img4.jpg" alt="inovacao" style="width:100%; max-width: 360px; border-radius: 12px;"/>
         </div>
       </div>
     </section>
+
     <section id="lideranca" aria-labelledby="lideranca-title">
-      <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
-        <div style="flex:1;min-width:320px">
+      <div style="display: grid; grid-template-columns: 480px 1fr; gap: 28px; align-items: space-evenly;">
+        <div>
           <div class="section-title" style="background:var(--accent-blue)">Liderança</div>
           <p>
-            Sob a liderança do Prof. Robson Fidalgo, pesquisador e professor do CIn-UFPE, o grupo conta com mais de uma década de dedicação ao desenvolvimento de pesquisas e produtos inovadores na área de tecnologia assistiva e inclusão digital.
+            Sob a liderança do <strong>Prof. Robson Fidalgo</strong>, pesquisador e professor do CIn-UFPE, o grupo conta com mais de uma década de dedicação ao desenvolvimento de pesquisas e produtos inovadores na área de tecnologia assistiva e inclusão digital.
           </p>
         </div>
-        <div style="width:280px">
-          <img src="assets/fidas.png" alt="Robson Fidalgo"/>
+        <div class="lead-card">
+          <div class="lead-photo">
+            <img src="assets/fidalgo.png" alt="Robson Fidalgo"/>
+          </div>
         </div>
       </div>
     </section>
   </div>
+  
   <footer>
-    <div class="wrap" style="display:flex;align-items:center;justify-content:center; max-height: 25px;">
+    <div class="wrap">
       <strong>Assistive 2025</strong>
+      <p style="margin:0; font-size: 14px;">Grupo de Pesquisa de Tecnologia Assistiva | Centro de Informática (CIn) - UFPE</p>
     </div>
   </footer>
+  <script>
+    (function(){
+      const track = document.querySelector('.carousel-track');
+      const items = Array.from(track.children);
+      const prevBtn = document.querySelector('.carousel-prev');
+      const nextBtn = document.querySelector('.carousel-next');
+      const dots = Array.from(document.querySelectorAll('.carousel-dot'));
+      let index = 0;
+      const total = items.length;
+
+      function update(){
+        const offset = -index * 50;
+        track.style.transform = 'translateX(' + offset + '%)';
+        dots.forEach((d,i)=> d.setAttribute('aria-current', i===index ? 'true' : 'false'));
+        items.forEach((it,i)=> it.setAttribute('tabindex', i===index ? '0' : '-1'));
+      }
+
+      prevBtn.addEventListener('click', ()=> { index = (index-1 + total) % total; update(); resetAuto(); });
+      nextBtn.addEventListener('click', ()=> { index = (index+1) % total; update(); resetAuto(); });
+
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => { index = i; update(); resetAuto(); });
+      });
+      // Keyboard navigation
+      document.querySelector('.carousel').addEventListener('keydown', (e) => {
+        if(e.key === 'ArrowLeft') { index = (index-1 + total) % total; update(); resetAuto(); }
+        if(e.key === 'ArrowRight') { index = (index+1) % total; update(); resetAuto(); }
+      });
+
+      // Autoplay with pause on hover/focus
+      let interval = setInterval(()=> { index = (index+1) % total; update(); }, 5000);
+      const carouselEl = document.querySelector('.carousel');
+      function resetAuto(){
+        clearInterval(interval);
+        interval = setInterval(()=> { index = (index+1) % total; update(); }, 5000);
+      }
+      ['mouseenter','focusin'].forEach(ev => carouselEl.addEventListener(ev, ()=> clearInterval(interval)));
+      ['mouseleave','focusout'].forEach(ev => carouselEl.addEventListener(ev, ()=> resetAuto()));
+
+      // Initial setup
+      update();
+    })();
+  </script>
 </body>
 </html>
